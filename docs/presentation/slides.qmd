@@ -1,0 +1,11 @@
+---
+title: "Factor Fund — Showcase"
+format: revealjs
+---
+
+## Goal
+Transparency of the process without exposing proprietary code.
+
+## Pipeline
+- Stages 01–06: data preparation and splits
+- Stages 07–11: consolidation, strategies, fees, charts, metrics

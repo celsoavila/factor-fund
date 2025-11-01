@@ -1,0 +1,13 @@
+name: factor-fund
+channels: [conda-forge]
+dependencies:
+  - python>=3.10
+  - numpy
+  - pandas
+  - pyarrow
+  - matplotlib
+  - plotly
+  - pydantic
+  - pip
+  - pip:
+      - rich
