@@ -1,16 +1,27 @@
 # Stage 01 — Ingestion & Source Catalog
 
-**Inputs**
-- See previous stage artifacts (as applicable).
+**Objective**  
+Inventory and ingest all data sources (Bloomberg/Economatica/internal CSVs), define the **minimum price schema**, and produce a **universe catalog** of series/tickers with basic metadata.
 
-**Process (high-level)**
-- What this stage does (without exposing hyperparameters or proprietary code).
+## Inputs (examples)
+- Daily prices for assets (adjusted or raw as available)
+- Benchmarks (CDI, Ibovespa, IFIX, SMLL, etc.)
+- Mapping table for tickers/symbols (Bloomberg ↔ B3 ↔ internal alias)
 
-**Outputs**
-- Artifacts produced for the next stage (tables/files/figures).
+## Process (high-level)
+- Define a minimal price schema: `date, ticker, px_last, px_open, px_high, px_low, volume`.
+- Build a **series catalog**: `universe.csv` with `ticker, provider, currency, adjustments_flag, notes`.
+- Integrity checks: duplicated dates, holes (trading calendar vs. ANBIMA/B3), data types.
 
-**Minimal checks**
-- Short, objective checklist.
+## Outputs
+- **Private** landing zones by provider under `private/data_raw/`.
+- **Private** processed catalog under `private/data_processed/catalog/universe.csv`.
+- **Public** sample catalog under `data/public_samples/universe_sample.csv` (no sensitive values).
 
-**Public vs. Private**
-- What goes to `reports/` or `data/public_samples/` vs. what remains under `private/`.
+## Minimal validation
+- Temporal coverage by series
+- % of missing business days vs. chosen calendar
+
+## Public vs. Private
+- **Public**: generic catalog structure and tiny samples.
+- **Private**: full raw dumps and provider-specific payloads.

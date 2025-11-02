@@ -1,16 +1,26 @@
 # Stage 04 — Advanced Cleaning, Outliers & Gaps
 
-**Inputs**
-- See previous stage artifacts (as applicable).
+**Objective**  
+Handle residual outliers, stale prints, and gaps. Standardize winsorization/clipping policy and build a **quality mask** per asset/date.
 
-**Process (high-level)**
-- What this stage does (without exposing hyperparameters or proprietary code).
+## Inputs
+- `returns_daily.parquet` (Stage 03)
+- Heuristics/thresholds for detection (private)
 
-**Outputs**
-- Artifacts produced for the next stage (tables/files/figures).
+## Process (high-level)
+- Detect spikes and stale prices.
+- Apply winsorization (e.g., 0.5%–99.5%) where allowed.
+- Build `quality_mask` (boolean per asset/date) and confidence scores.
 
-**Minimal checks**
-- Short, objective checklist.
+## Outputs
+- **Private** clean returns: `private/data_processed/clean/returns_clean.parquet`.
+- **Private** masks: `private/data_processed/clean/quality_mask.parquet`.
+- **Public**: description and illustrative heatmap in `reports/figures/`.
 
-**Public vs. Private**
-- What goes to `reports/` or `data/public_samples/` vs. what remains under `private/`.
+## Minimal validation
+- % of clipped points per asset
+- Impact on aggregate metrics (volatility/mean return)
+
+## Public vs. Private
+- **Public**: general rules and charts; no exact thresholds.
+- **Private**: exact thresholds and full masks.

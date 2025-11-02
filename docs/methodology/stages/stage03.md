@@ -1,16 +1,25 @@
 # Stage 03 — Corporate Actions & Price Adjustments
 
-**Inputs**
-- See previous stage artifacts (as applicable).
+**Objective**  
+Apply dividends/JSCP, splits/reverse splits, and spinoffs to produce **consistent daily returns** and adjusted prices when required.
 
-**Process (high-level)**
-- What this stage does (without exposing hyperparameters or proprietary code).
+## Inputs
+- `prices_normalized.parquet` (Stage 02)
+- Corporate action tables per asset (Bloomberg/Economatica/B3)
 
-**Outputs**
-- Artifacts produced for the next stage (tables/files/figures).
+## Process (high-level)
+- Build cumulative adjustment factors per asset/date.
+- Compute **adjusted price** (when needed) and **daily returns** robust to events.
+- Track quality flags: `corporate_action_gap`, applied `ex_date`, etc.
 
-**Minimal checks**
-- Short, objective checklist.
+## Outputs
+- **Private** daily returns: `private/data_processed/adjusted/returns_daily.parquet`.
+- **Public** small window sample: `reports/tables/returns_sample.csv`.
 
-**Public vs. Private**
-- What goes to `reports/` or `data/public_samples/` vs. what remains under `private/`.
+## Minimal validation
+- Check `ex_date` alignment for dividends/splits vs. sources
+- Highlight outliers (e.g., returns > X standard deviations)
+
+## Public vs. Private
+- **Public**: methodology + before/after visual examples (no full datasets).
+- **Private**: full event tables and adjusted series.

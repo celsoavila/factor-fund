@@ -1,16 +1,25 @@
 # Stage 06 — Train/Validation/Test Splits & Cross-Validation
 
-**Inputs**
-- See previous stage artifacts (as applicable).
+**Objective**  
+Define temporal partitions and a **walk-forward** (or expanding windows) evaluation scheme, with clear **out-of-sample** policy and backtest hygiene.
 
-**Process (high-level)**
-- What this stage does (without exposing hyperparameters or proprietary code).
+## Inputs
+- `features_base.parquet` (Stage 05)
+- Partition definitions (private)
 
-**Outputs**
-- Artifacts produced for the next stage (tables/files/figures).
+## Process (high-level)
+- Create a **partition schema**: Train/Valid/Test (e.g., 2009–2016 / 2017–2019 / 2020–2025) or rolling walk-forward with periodic retraining.
+- Balance asset/time coverage while preserving **temporal order**.
+- Save reproducible partition indices and seeds (private).
 
-**Minimal checks**
-- Short, objective checklist.
+## Outputs
+- **Private** split indices: `private/data_processed/splits/index_train_valid_test.json`.
+- **Public** walk-forward diagram and a summary table with cut dates.
 
-**Public vs. Private**
-- What goes to `reports/` or `data/public_samples/` vs. what remains under `private/`.
+## Minimal validation
+- No unintended overlap between train and test.
+- Minimum coverage per window.
+
+## Public vs. Private
+- **Public**: method diagram and (optional) rounded cut dates.
+- **Private**: exact indices/seeds and internal split files.
