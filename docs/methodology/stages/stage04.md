@@ -1,26 +1,47 @@
-# Stage 04 — Advanced Cleaning, Outliers & Gaps
+# Stage 04 — Outliers, Stale Prints & Quality Masks
 
 **Objective**  
-Handle residual outliers, stale prints, and gaps. Standardize winsorization/clipping policy and build a **quality mask** per asset/date.
+Detect and mitigate outliers and stale prints, and produce a **quality mask** per (`date`, `ticker`) to flag observations that should be excluded or down‑weighted in later stages.
 
-## Inputs
-- `returns_daily.parquet` (Stage 03)
-- Heuristics/thresholds for detection (private)
+---
 
-## Process (high-level)
-- Detect spikes and stale prices.
-- Apply winsorization (e.g., 0.5%–99.5%) where allowed.
-- Build `quality_mask` (boolean per asset/date) and confidence scores.
+## Inputs (from Stage 03)
+- Cleaned corporate/economic panels (daily), indexed by `date` and `ticker`.
+- Optionally, reference price/volume series for stale‑print checks.
+
+---
+
+## Process (overview)
+1. **Outlier detection**  
+   - Identify extreme values using robust statistics (e.g., percentiles or MAD‑based rules).  
+   - Apply **winsorization/clipping** where allowed to stabilize tail behavior.
+
+2. **Stale prints / flatlines**  
+   - Flag sequences with unchanged values when variation would be expected (e.g., price with volume).
+
+3. **Quality mask**  
+   - Build a boolean mask `quality_mask[date, ticker]` (True=usable) and optional confidence scores.  
+   - This mask is consumed downstream to filter features and training rows.
+
+4. **Documentation**  
+   - Summary diagnostics (percent clipped per column, per ticker).  
+   - Illustrative heatmap of usable coverage.
+
+---
 
 ## Outputs
-- **Private** clean returns: `private/data_processed/clean/returns_clean.parquet`.
-- **Private** masks: `private/data_processed/clean/quality_mask.parquet`.
-- **Public**: description and illustrative heatmap in `reports/figures/`.
+- **Private**: `private/data_processed/clean/returns_clean.parquet` (or equivalent) and `private/data_processed/clean/quality_mask.parquet`.  
+- **Public**: high‑level description, plus optional figures (e.g., coverage heatmap) under `reports/figures/`.
 
-## Minimal validation
-- % of clipped points per asset
-- Impact on aggregate metrics (volatility/mean return)
+---
+
+## Validation
+- % of points flagged/clipped by column and by ticker.  
+- Impact on aggregate stats (mean/volatility).  
+- No leakage: thresholds derived **only** from in‑window data where applicable.
+
+---
 
 ## Public vs. Private
-- **Public**: general rules and charts; no exact thresholds.
-- **Private**: exact thresholds and full masks.
+- **Public**: methodology, rationale, and figures.  
+- **Private**: exact thresholds, parameters, and full masks/clean tables.

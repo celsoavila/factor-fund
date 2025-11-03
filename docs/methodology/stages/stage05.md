@@ -1,25 +1,43 @@
 # Stage 05 — Base Features & Lag Alignment
 
 **Objective**  
-Compute base features (momentum, reversal, volatility, liquidity, etc.), enforce **lags** to prevent look-ahead bias, and assemble the **feature matrix**.
+Compute base features (e.g., momentum, reversal, volatility, liquidity) and enforce **lags** to prevent look‑ahead bias. Produce a **feature matrix** aligned to the execution policy (e.g., features at D → trade at D+1).
+
+---
 
 ## Inputs
-- `returns_clean.parquet`, `quality_mask.parquet` (Stage 04)
-- Feature catalog (private: list + hyperparameters)
+- Cleaned panels and `quality_mask` from Stage 04.
+- Business calendar and any reference series needed for certain features.
 
-## Process (high-level)
-- Compute classical features: cumulative returns (1m/3m/6m/12m), vol 21/63/252d, turnover, short drawdown, etc.
-- Enforce execution lag (e.g., predict at D using info up to D; execute at D+1).
-- Optional z-scores by asset/time and null handling via `quality_mask`.
+---
+
+## Process (overview)
+1. **Feature set (examples)**  
+   - Cumulative returns (1m/3m/6m/12m), rolling volatility (21/63/252d), turnover, short‑term drawdown, etc.  
+   - Normalize cross‑sectionally if needed (e.g., z‑scores).
+
+2. **Lagging & alignment**  
+   - Enforce T+1 execution: features computed with data up to day D are associated with signals for **D+1**.  
+   - Drop or mask rows where lags cannot be satisfied.
+
+3. **Mask application**  
+   - Apply `quality_mask` to avoid polluted observations.
+
+---
 
 ## Outputs
-- **Private** features parquet: `private/data_processed/features/features_base.parquet`.
-- **Public** dictionary of features (names + intuition) under `docs/methodology/`.
+- **Private**: `private/data_processed/features/features_base.parquet` (feature matrix).  
+- **Public**: dictionary of feature names/intuition (no hyperparameters), possibly a small synthetic example for docs.
 
-## Minimal validation
-- Leakage checks: no feature should use future information.
-- Coverage after lag application (assets × time).
+---
+
+## Validation
+- **Leakage checks**: verify no feature uses data from the future.  
+- Coverage by asset/time after lagging and mask application.  
+- Basic stability diagnostics (e.g., rolling means/vol of key features).
+
+---
 
 ## Public vs. Private
-- **Public**: feature names and intuition.
-- **Private**: exact windows, hyperparameters, normalizations.
+- **Public**: feature list and high‑level definitions.  
+- **Private**: exact windows, hyperparameters, normalization details.
