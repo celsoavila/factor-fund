@@ -1,11 +1,78 @@
 ---
-title: "Factor Fund — Showcase"
-format: revealjs
+title: "Factor Fund — Data & Research Pipeline"
+author: "Celso Avila"
+format: 
+  revealjs:
+    slide-number: true
+    toc: false
+    transition: fade
+    incremental: false
 ---
 
-## Goal
-Transparency of the process without exposing proprietary code.
+## Overview
 
-## Pipeline
-- Stages 01–06: data preparation and splits
-- Stages 07–11: consolidation, strategies, fees, charts, metrics
+- Public **showcase** of the process, keeping proprietary code, parameters, and raw data **private**.
+- Focus on **data hygiene**, **time awareness** (no look-ahead), and **reproducibility** of public artifacts.
+
+---
+
+## Pipeline (01–06)
+
+- **Stage 01 — Ingestion & Source Catalog**  
+  Define the universe; map provider symbols; minimal schema (EOD, `date`, `ticker`).
+
+- **Stage 02 — Corporate & Economic Integration**  
+  Consolidate corporate fundamentals and macro indicators from well-known providers.
+
+---
+
+## Pipeline (03–04)
+
+- **Stage 03 — Cleaning & Gap Handling**  
+  Numeric coercion; per-ticker time-aware filling (future-first, then past).
+
+- **Stage 04 — Outliers, Stale Prints & Quality Masks**  
+  Robust clipping and `quality_mask` to flag unusable observations.
+
+---
+
+## Pipeline (05–06)
+
+- **Stage 05 — Base Features & Lag Alignment**  
+  Momentum/volatility/liquidity features with **T+1** execution alignment.
+
+- **Stage 06 — Train/Validation/Test Split**  
+  Current split: **2002–2017** (Train/Val) vs **2018–Aug 2025** (Test).
+
+---
+
+## Illustration — Coverage
+
+![](../../reports/figures/coverage_heatmap.png)
+
+- Example coverage/quality view after masks.
+- Intended for public documentation; no sensitive data.
+
+---
+
+## Illustration — Walk-Forward
+
+![](../../reports/figures/split_diagram.png)
+
+- Current backtest uses a **single hold-out**.  
+- Walk-forward is a **future extension** (periodic retraining + multiple OOS blocks).
+
+---
+
+## Next Steps (07–11)
+
+- Consolidation → Strategies → Fees → Charts → Risk & Metrics.  
+- Publish only **sanitized** figures/tables to `reports/` for the showcase.
+
+---
+
+## Privacy & Contact
+
+- Proprietary code, hyperparameters, and raw datasets reside under `private/` (git-ignored).  
+- Contact: **Celso Avila** — (add preferred email/URL).
+
