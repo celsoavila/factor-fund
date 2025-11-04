@@ -16,6 +16,11 @@ format:
 
 ---
 
+## Pipeline Overview (Stages 01–06)
+![](../../reports/figures/pipeline_01_06.png)
+
+---
+
 ## Pipeline (01–06)
 
 - **Stage 01 — Ingestion & Source Catalog**  
