@@ -1,5 +1,7 @@
 # Factor Fund (showcase)
 
+👉 **Public slides (showcase):** https://celsoavila.github.io/factor-fund/
+
 **Goal**: Publicly document the research & production process of a factor-based strategy while keeping proprietary code, parameters and raw data private.
 
 ## Pipeline (high-level)
