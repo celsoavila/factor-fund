@@ -76,6 +76,36 @@ format:
 
 ---
 
+## Próximos (07–11)
+
+- **07 — Métricas & Risco**: vol 63d, VaR/CVaR, DD, Calmar.
+- **08 — Estratégias**: IDX_TARGET, LS_DN, LS_RN.
+- **09 — Taxas (unificado fim)**: adm/perf/IOF/IR; audit simples.
+- **10 — Gráficos & narrativa**: heatmap YTD, split por buckets.
+- **11 — Produção**: cron, GitHub Actions, publicação.
+
+::: { .columns }
+::: { .column width="60%" }
+![](figures/fig-heatmap.svg){#fig-heatmap}
+:::
+::: { .column width="40%" }
+![](figures/fig-estrategias-split.svg){#fig-split}
+![](figures/fig-flowchart.svg){#fig-flowchart}
+:::
+:::
+
+
+---
+
+
+::: notes
+Substituir os placeholders quando `scripts/make_figures.py` gerar as figuras reais.
+:::
+
+
+
+
+
 ## Privacy & Contact
 
 - Proprietary code, hyperparameters, and raw datasets reside under `private/` (git-ignored).  
