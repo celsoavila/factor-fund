@@ -96,21 +96,19 @@ format:
 
 
 ---
-
 ## Annual return — por estratégia
-::: {layout-ncol=3}
-![](figures/annual-long-bias.png)
-![](figures/annual-ls-dn.png)
-![](figures/annual-ls-rn.png)
-:::
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+  <img src="figures/annual-long-bias.png" style="width:100%;height:auto;">
+  <img src="figures/annual-ls-dn.png"   style="width:100%;height:auto;">
+  <img src="figures/annual-ls-rn.png"   style="width:100%;height:auto;">
+</div>
 
 ## Curvas acumuladas — por estratégia
-::: {layout-ncol=3}
-![](figures/cum-long-bias.png)
-![](figures/cum-ls-dn.png)
-![](figures/cum-ls-rn.png)
-:::
-
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+  <img src="figures/cum-long-bias.png" style="width:100%;height:auto;">
+  <img src="figures/cum-ls-dn.png"     style="width:100%;height:auto;">
+  <img src="figures/cum-ls-rn.png"     style="width:100%;height:auto;">
+</div>
 
 ::: notes
 Substituir os placeholders quando `scripts/make_figures.py` gerar as figuras reais.
