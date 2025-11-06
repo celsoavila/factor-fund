@@ -98,6 +98,22 @@ format:
 ---
 
 
+## Annual return — por estratégia
+::: { .columns }
+::: {.column width="33%"} ![](figures/annual-long-bias.png) :::
+::: {.column width="33%"} ![](figures/annual-ls-dn.png) :::
+::: {.column width="33%"} ![](figures/annual-ls-rn.png) :::
+:::
+
+## Curvas acumuladas — por estratégia
+::: { .columns }
+::: {.column width="33%"} ![](figures/cum-long-bias.png) :::
+::: {.column width="33%"} ![](figures/cum-ls-dn.png) :::
+::: {.column width="33%"} ![](figures/cum-ls-rn.png) :::
+:::
+
+
+
 ::: notes
 Substituir os placeholders quando `scripts/make_figures.py` gerar as figuras reais.
 :::
