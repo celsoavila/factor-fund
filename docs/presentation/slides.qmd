@@ -97,21 +97,19 @@ format:
 
 ---
 
-
 ## Annual return — por estratégia
-::: { .columns }
-::: {.column width="33%"} ![](figures/annual-long-bias.png) :::
-::: {.column width="33%"} ![](figures/annual-ls-dn.png) :::
-::: {.column width="33%"} ![](figures/annual-ls-rn.png) :::
+::: {layout-ncol=3}
+![](figures/annual-long-bias.png)
+![](figures/annual-ls-dn.png)
+![](figures/annual-ls-rn.png)
 :::
 
 ## Curvas acumuladas — por estratégia
-::: { .columns }
-::: {.column width="33%"} ![](figures/cum-long-bias.png) :::
-::: {.column width="33%"} ![](figures/cum-ls-dn.png) :::
-::: {.column width="33%"} ![](figures/cum-ls-rn.png) :::
+::: {layout-ncol=3}
+![](figures/cum-long-bias.png)
+![](figures/cum-ls-dn.png)
+![](figures/cum-ls-rn.png)
 :::
-
 
 
 ::: notes
