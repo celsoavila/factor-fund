@@ -1,15 +1,18 @@
-Factor Fund — Factor-based & ML-driven Equity Strategy
+# Factor Fund — Factor-based & ML-driven Equity Strategy
 
-This repository presents a clean, modular and production-style research pipeline
-for a systematic equity strategy combining risk factors and machine learning.
+This repository presents a clean, modular and production-style research pipeline  
+for a systematic equity strategy combining **risk factors** and **machine learning**.
 
-⚠️ All datasets used in this repository are synthetic or anonymized.
-The goal of this project is to serve as a public showcase of methodology,
-architecture, and code quality for professional and academic purposes.
+> ⚠️ All datasets used in this repository are synthetic or anonymized.  
+> The goal of this project is to serve as a **public showcase** of methodology,
+> architecture, and code quality for professional and academic purposes.
 
-🔧 Pipeline Overview
+---
 
-The project is structured into five modules (M1–M5):
+## 🔧 Pipeline Overview
+
+The project is structured into **five modules (M1–M5)**:
+
 
 M1 — Data Preparation
 M2 — Prediction Model
@@ -21,7 +24,11 @@ M5 — Factor Analysis
 This modular architecture reflects the design of real-world quant pipelines,
 while keeping the public version simple, reproducible and easy to understand.
 
-📦 Repository Structure
+---
+
+## 📦 Repository Structure
+
+
 factor-fund/
 ├─ src/factor_fund/
 │  ├─ data/         # M1 – data cleaning, factor engineering
@@ -33,98 +40,89 @@ factor-fund/
 ├─ data/examples/   # Synthetic example datasets
 └─ docs/presentation/slides.qmd
 
-🧩 Module Summary
-M1 — Data Preparation
 
-Cleans raw data (prices, returns, fundamentals)
+---
 
-Builds standard factor features:
+## 🧩 Module Summary
 
-Value
+### **M1 — Data Preparation**
+- Cleans raw data (prices, returns, fundamentals)
+- Builds standard factor features:
+  - Value, Momentum, Quality, Size, Volatility
+- Applies scaling, winsorization and ranking  
+- Produces the **Factor Matrix**, the main input for M2
 
-Momentum
+---
 
-Quality
-
-Size
-
-Volatility
-
-Applies scaling, winsorization and ranking
-
-Produces the Factor Matrix, the main input for M2
-
-M2 — Prediction Model
-
+### **M2 — Prediction Model**
 A cross-sectional model predicting relative future performance.
 
 Supports:
-
-Linear models (Ridge, Lasso)
-
-Tree-based models (RandomForest, XGBoost)
-
-Neural networks (Keras/TensorFlow)
+- Linear models (Ridge, Lasso)
+- Tree-based models (RandomForest, XGBoost)
+- Neural networks (Keras/TensorFlow)
 
 Outputs:
 
 date, ticker, model_score
 
-M3 — Portfolio Construction
 
+---
+
+### **M3 — Portfolio Construction**
 Transforms model scores into implementable target weights under:
 
-Long-only or long/short rules
-
-Maximum/minimum weights
-
-Normalization and bucket-based ranking
-
-Turnover controls (optional)
+- Long-only or long/short rules  
+- Maximum/minimum weights  
+- Normalization and bucket-based ranking  
+- Turnover controls (optional)
 
 Output:
 
 date, ticker, target_weight
 
-M4 — Backtesting & Performance
+
+---
+
+### **M4 — Backtesting & Performance**
 
 Computes:
+- Daily PnL  
+- Benchmark-relative returns  
+- Annualized volatility  
+- Sharpe, Sortino  
+- Max drawdown  
+- (% of CDI for Brazilian context)
 
-Daily PnL
+Generates visualizations stored in `reports/figures/`.
 
-Benchmark-relative returns
+---
 
-Annualized volatility
-
-Sharpe / Sortino
-
-Max drawdown
-
-(% of CDI for Brazilian context)
-
-Generates visualizations stored in reports/figures/.
-
-M5 — Factor Analysis
+### **M5 — Factor Analysis**
 
 Includes:
-
-Factor importance (e.g., SHAP or model-based metrics)
-
-Factor exposure (portfolio betas)
-
-Factor premia (future returns of each factor)
+- **Factor importance** (e.g., SHAP or model-based metrics)
+- **Factor exposure** (portfolio betas)
+- **Factor premia** (future returns of each factor)
 
 This module provides interpretability and economic insight.
 
-🚀 Getting Started
-1. Clone the repository
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
 git clone https://github.com/celsoavila/factor-fund.git
 cd factor-fund
 
 2. Create virtual environment
+
 python -m venv .venv
 source .venv/bin/activate   # Mac/Linux
 .venv\Scripts\activate      # Windows
+
 
 3. Install dependencies
 pip install -r requirements.txt
@@ -176,6 +174,7 @@ Credit & multimarket funds
 Daily research pipelines and production automation
 
 This project is a curated public showcase of real-world quantitative work.
+
 
 
 
