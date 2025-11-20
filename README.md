@@ -177,4 +177,5 @@ Daily research pipelines and production automation
 
 This project is a curated public showcase of real-world quantitative work.
 
-👈 PARE DE COPIAR AQUI
+
+
