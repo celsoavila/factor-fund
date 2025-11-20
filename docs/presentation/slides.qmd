@@ -1,0 +1,251 @@
+title: "Factor Fund – Systematic Factor & ML Strategy"
+subtitle: "Public Showcase (M1–M5 Pipeline)"
+author: "Celso Avila"
+format:
+revealjs:
+theme: simple
+slide-number: true
+transition: fade
+overview: true
+center: true
+ratio: "16:9"
+Factor Fund
+Factor-based & ML-driven Equity Strategy
+
+A modular, production-style pipeline combining:
+
+Factor investing
+
+Machine learning
+
+Portfolio optimization
+
+Clean documentation
+
+All datasets shown in this public version are synthetic or anonymized.
+
+Motivation
+
+Why combine factor models with machine learning?
+
+Markets are noisy and dynamic
+
+Linear models can under-express nonlinear relationships
+
+Factors bring economic intuition
+
+ML brings flexible predictive power
+
+Together they create a robust, interpretable, and adaptive strategy
+
+High-Level Architecture
+
+We organize the pipeline into five modules (M1–M5):
+
+M1 — Data Preparation
+M2 — Prediction Model
+M3 — Portfolio Construction
+M4 — Backtesting & Performance
+M5 — Factor Analysis
+
+
+This structure mirrors real-world quant research pipelines,
+while remaining simple and teachable in a public repo.
+
+Module M1 — Data Preparation
+Objective
+
+Build a clean factor matrix for model consumption.
+
+Steps
+
+Load synthetic or anonymized raw data
+
+Build factor features:
+
+Value, Momentum, Quality
+
+Size, Volatility
+
+Apply:
+
+Normalization
+
+Winsorization
+
+Ranking
+
+Output
+
+A table with:
+
+date, ticker, factor_1, factor_2, ..., factor_n
+
+Module M2 — Prediction Model
+Objective
+
+Predict relative performance across the cross-section.
+
+Models supported
+
+Ridge / Lasso
+
+RandomForest / XGBoost
+
+Neural networks (Keras/TensorFlow)
+
+Workflow
+
+Rolling training on historical factor matrices
+
+Model persistence (.keras or .pkl)
+
+Daily inference producing model scores
+
+Output
+date, ticker, model_score
+
+Module M3 — Portfolio Construction
+Objective
+
+Translate model scores into daily positions.
+
+Approach
+
+Ranking or quantile bucketing
+
+Optional constraints:
+
+Long-only or long/short
+
+Max/min weights
+
+Turnover limits
+
+Sector balancing (optional)
+
+Output
+date, ticker, target_weight
+
+
+Used for either simulation (M4) or actual daily implementation (internal).
+
+Module M4 — Backtesting & Performance
+Computes
+
+Daily PnL
+
+Benchmark-relative performance
+
+Annualized volatility
+
+Sharpe, Sortino
+
+Max drawdown
+
+(% of CDI for Brazilian benchmark cases)
+
+Produces
+
+Return curves
+
+Distribution plots
+
+Drawdown charts
+
+Stored under:
+
+reports/figures/
+
+Module M5 — Factor Analysis
+Three pillars:
+1. Factor Importance
+
+SHAP values
+
+Permutation importance
+
+Cross-sectional contributions
+
+2. Factor Exposures
+
+Regression of portfolio returns on factor returns
+
+Understanding unintended bets
+
+3. Factor Premia
+
+Future returns of “high minus low” factor portfolios
+
+Regime-based analysis
+
+End-to-End Flow
+Raw synthetic data
+       ↓
+M1 – Data preparation → factor matrix
+       ↓
+M2 – Model training & inference → scores
+       ↓
+M3 – Portfolio construction → target weights
+       ↓
+M4 – Backtesting → performance analytics
+       ↓
+M5 – Factor analysis → interpretability
+
+Reproducibility
+
+The repository includes:
+
+The full M1–M5 skeleton
+
+Example synthetic datasets
+
+Demonstration notebooks
+
+A clean project layout for hiring managers or collaborators
+
+Roadmap
+
+Short term:
+
+Add synthetic end-to-end example
+
+Include SHAP visualizations
+
+Add factor exposure calculations
+
+Add simple automated tests
+
+Medium term:
+
+Add L/S strategy demo
+
+Add alternative factor definitions
+
+Add multi-country universe option
+
+About the Author
+
+Celso Avila
+Quantitative Portfolio Manager & CTO
+
+Experience in:
+
+Systematic equity strategies
+
+ML-based return prediction
+
+Portfolio construction & optimization
+
+Credit and multimarket funds
+
+Research pipelines and daily deployment
+
+This project is a curated public showcase of real-world quant work.
+
+Thank You
+
+Repository:
+https://github.com/celsoavila/factor-fund
+
+Feel free to open issues or reach out for discussion or collaboration.
