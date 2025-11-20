@@ -13,13 +13,13 @@ for a systematic equity strategy combining **risk factors** and **machine learni
 
 The project is structured into **five modules (M1–M5)**:
 
-
-M1 — Data Preparation
-M2 — Prediction Model
-M3 — Portfolio Construction
-M4 — Backtesting & Performance
-M5 — Factor Analysis
-
+```
+M1 — Data Preparation  
+M2 — Prediction Model  
+M3 — Portfolio Construction  
+M4 — Backtesting & Performance  
+M5 — Factor Analysis  
+```
 
 This modular architecture reflects the design of real-world quant pipelines,
 while keeping the public version simple, reproducible and easy to understand.
@@ -28,7 +28,7 @@ while keeping the public version simple, reproducible and easy to understand.
 
 ## 📦 Repository Structure
 
-
+```
 factor-fund/
 ├─ src/factor_fund/
 │  ├─ data/         # M1 – data cleaning, factor engineering
@@ -39,7 +39,7 @@ factor-fund/
 ├─ notebooks/       # High-level walkthroughs and demos
 ├─ data/examples/   # Synthetic example datasets
 └─ docs/presentation/slides.qmd
-
+```
 
 ---
 
@@ -116,64 +116,57 @@ This module provides interpretability and economic insight.
 ```bash
 git clone https://github.com/celsoavila/factor-fund.git
 cd factor-fund
+```
 
-2. Create virtual environment
+### 2. Create virtual environment
 
+```bash
 python -m venv .venv
 source .venv/bin/activate   # Mac/Linux
 .venv\Scripts\activate      # Windows
+```
 
+### 3. Install dependencies
 
-3. Install dependencies
+```bash
 pip install -r requirements.txt
+```
 
-4. Explore the pipeline
+### 4. Explore the pipeline
 
 Open the notebooks:
 
-M1_data_prep.ipynb
+- `M1_data_prep.ipynb`
+- `M2_model_training.ipynb`
+- `M3_portfolio.ipynb`
+- `M4_backtest.ipynb`
+- `M5_factor_analysis.ipynb`
 
-M2_model_training.ipynb
+## 🎯 Roadmap
 
-M3_portfolio.ipynb
+**Short term**
+- Add synthetic end-to-end demo  
+- Add performance figures and factor exposure plots  
+- Add minimal CI + unit tests  
 
-M4_backtest.ipynb
+**Medium term**
+- Add advanced model architectures  
+- Add multi-country universes  
+- Expand factor research modules  
 
-M5_factor_analysis.ipynb
-
-🎯 Roadmap
-
-Short term:
-
-Add synthetic end-to-end demo
-
-Add performance figures and factor exposure plots
-
-Add minimal CI + unit tests
-
-Medium term:
-
-Add advanced model architectures
-
-Add multi-country universes
-
-Expand factor research modules
-
-👤 About the Author
+## 👤 About the Author
 
 Quantitative Portfolio Manager & CTO with experience in:
 
-Factor investing
-
-Machine learning for financial prediction
-
-Portfolio optimization
-
-Credit & multimarket funds
-
-Daily research pipelines and production automation
+- Factor investing  
+- Machine learning for financial prediction  
+- Portfolio optimization  
+- Credit & multimarket funds  
+- Daily research pipelines and production automation  
 
 This project is a curated public showcase of real-world quantitative work.
+
+
 
 
 
