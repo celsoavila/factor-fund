@@ -1,251 +1,236 @@
+---
 title: "Factor Fund – Systematic Factor & ML Strategy"
 subtitle: "Public Showcase (M1–M5 Pipeline)"
 author: "Celso Avila"
 format:
-revealjs:
-theme: simple
-slide-number: true
-transition: fade
-overview: true
-center: true
-ratio: "16:9"
-Factor Fund
-Factor-based & ML-driven Equity Strategy
+  revealjs:
+    theme: simple
+    slide-number: true
+    transition: fade
+    overview: true
+    center: true
+    ratio: "16:9"
+---
 
-A modular, production-style pipeline combining:
+## Factor Fund
 
-Factor investing
+### Systematic Factor & Machine Learning Strategy
 
-Machine learning
+A modular research pipeline combining:
 
-Portfolio optimization
+- Factor investing  
+- Machine learning  
+- Portfolio optimization  
+- Clean documentation  
 
-Clean documentation
+All datasets shown in this public version are **synthetic or anonymized**.
 
-All datasets shown in this public version are synthetic or anonymized.
+---
 
-Motivation
+## Why this project exists
 
-Why combine factor models with machine learning?
+- Markets are noisy, nonlinear and regime-dependent  
+- Traditional factor models provide **economic intuition**
+- Machine learning provides **predictive flexibility**
+- Combining both yields:  
+  - Robustness  
+  - Interpretability  
+  - Adaptability  
 
-Markets are noisy and dynamic
+Goal: demonstrate a **real-world quant pipeline** in a clean public format.
 
-Linear models can under-express nonlinear relationships
+---
 
-Factors bring economic intuition
+## High-Level Architecture
 
-ML brings flexible predictive power
+The pipeline is structured into **five modules (M1–M5)**:
 
-Together they create a robust, interpretable, and adaptive strategy
-
-High-Level Architecture
-
-We organize the pipeline into five modules (M1–M5):
-
+```
 M1 — Data Preparation
 M2 — Prediction Model
 M3 — Portfolio Construction
 M4 — Backtesting & Performance
 M5 — Factor Analysis
+```
 
+This mirrors professional quant research environments while remaining readable.
 
-This structure mirrors real-world quant research pipelines,
-while remaining simple and teachable in a public repo.
+---
 
-Module M1 — Data Preparation
-Objective
+## Module M1 — Data Preparation
 
-Build a clean factor matrix for model consumption.
+### Objective
+Build a **clean factor matrix** ready for modeling.
 
-Steps
+### Steps
+- Synthetic/anonymized raw data  
+- Feature engineering (Value, Momentum, Quality, Size, Volatility)  
+- Normalization  
+- Winsorization  
+- Ranking  
 
-Load synthetic or anonymized raw data
-
-Build factor features:
-
-Value, Momentum, Quality
-
-Size, Volatility
-
-Apply:
-
-Normalization
-
-Winsorization
-
-Ranking
-
-Output
-
-A table with:
-
+### Output
+```
 date, ticker, factor_1, factor_2, ..., factor_n
+```
 
-Module M2 — Prediction Model
-Objective
+---
 
-Predict relative performance across the cross-section.
+## Module M2 — Prediction Model
 
-Models supported
+### Objective
+Predict **future cross-sectional performance**.
 
-Ridge / Lasso
+### Supported models
+- Ridge / Lasso  
+- RandomForest / XGBoost  
+- Neural networks (Keras/TensorFlow)
 
-RandomForest / XGBoost
+### Workflow
+1. Historical rolling training  
+2. Model saved to disk  
+3. Daily inference returning **model scores**
 
-Neural networks (Keras/TensorFlow)
-
-Workflow
-
-Rolling training on historical factor matrices
-
-Model persistence (.keras or .pkl)
-
-Daily inference producing model scores
-
-Output
+### Output
+```
 date, ticker, model_score
+```
 
-Module M3 — Portfolio Construction
-Objective
+---
 
-Translate model scores into daily positions.
+## Module M3 — Portfolio Construction
 
-Approach
+### Objective
+Turn model scores into implementable positions.
 
-Ranking or quantile bucketing
+### Steps
+- Ranking or bucketing  
+- Normalization of weights  
+- Optional constraints:
+  - Long-only or long/short  
+  - Max/min weights  
+  - Turnover limits  
+  - Sector balancing  
 
-Optional constraints:
-
-Long-only or long/short
-
-Max/min weights
-
-Turnover limits
-
-Sector balancing (optional)
-
-Output
+### Output
+```
 date, ticker, target_weight
+```
 
+Usable for simulation (M4) or real implementation.
 
-Used for either simulation (M4) or actual daily implementation (internal).
+---
 
-Module M4 — Backtesting & Performance
-Computes
+## Module M4 — Backtesting & Performance
 
-Daily PnL
+### Metrics computed
+- Daily PnL  
+- Benchmark vs. strategy  
+- Annualized volatility  
+- Sharpe & Sortino  
+- Max drawdown  
+- (% of CDI for Brazilian context)
 
-Benchmark-relative performance
-
-Annualized volatility
-
-Sharpe, Sortino
-
-Max drawdown
-
-(% of CDI for Brazilian benchmark cases)
-
-Produces
-
-Return curves
-
-Distribution plots
-
-Drawdown charts
+### Visual outputs
+- Return curves  
+- Drawdown chart  
+- Distribution of returns  
 
 Stored under:
 
+```
 reports/figures/
+```
 
-Module M5 — Factor Analysis
-Three pillars:
-1. Factor Importance
+---
 
-SHAP values
+## Module M5 — Factor Analysis
 
-Permutation importance
+### Includes
 
-Cross-sectional contributions
+#### 1) Factor Importance
+- SHAP values  
+- Permutation importance  
+- Model-based decomposition  
 
-2. Factor Exposures
+#### 2) Factor Exposures  
+- Portfolio betas vs factor returns  
+- Identify unintended bets
 
-Regression of portfolio returns on factor returns
+#### 3) Factor Premia  
+- Future returns of factors  
+- Regime-based performance
 
-Understanding unintended bets
+Factor analysis provides **interpretability + economic context**.
 
-3. Factor Premia
+---
 
-Future returns of “high minus low” factor portfolios
+## End-to-End Flow
 
-Regime-based analysis
-
-End-to-End Flow
+```
 Raw synthetic data
        ↓
-M1 – Data preparation → factor matrix
+M1 – Data Preparation → factor matrix
        ↓
-M2 – Model training & inference → scores
+M2 – Prediction Model → scores
        ↓
-M3 – Portfolio construction → target weights
+M3 – Portfolio Construction → weights
        ↓
 M4 – Backtesting → performance analytics
        ↓
-M5 – Factor analysis → interpretability
+M5 – Factor Analysis → interpretability
+```
 
-Reproducibility
+---
 
-The repository includes:
+## Reproducibility
 
-The full M1–M5 skeleton
+This repository includes:
 
-Example synthetic datasets
+- Full M1–M5 project structure  
+- Synthetic datasets  
+- Notebooks illustrating each module  
+- Clean and professional documentation  
 
-Demonstration notebooks
+Designed as a **public quant research showcase**.
 
-A clean project layout for hiring managers or collaborators
+---
 
-Roadmap
+## Roadmap
 
-Short term:
+**Short term**
+- Add synthetic end-to-end example  
+- Include SHAP/importance visuals  
+- Add factor exposure analysis  
+- Add simple automated tests  
 
-Add synthetic end-to-end example
+**Medium term**
+- Add long/short example  
+- Add alternative factors  
+- Add multi-country universe  
 
-Include SHAP visualizations
+---
 
-Add factor exposure calculations
+## About the Author
 
-Add simple automated tests
-
-Medium term:
-
-Add L/S strategy demo
-
-Add alternative factor definitions
-
-Add multi-country universe option
-
-About the Author
-
-Celso Avila
+**Celso Avila**  
 Quantitative Portfolio Manager & CTO
 
 Experience in:
+- Systematic equity strategies  
+- ML-based return prediction  
+- Portfolio construction & optimization  
+- Credit and multimarket funds  
+- Automation of research pipelines  
 
-Systematic equity strategies
+This project serves as a **public showcase** of real-world quantitative work.
 
-ML-based return prediction
+---
 
-Portfolio construction & optimization
+## Thank You
 
-Credit and multimarket funds
-
-Research pipelines and daily deployment
-
-This project is a curated public showcase of real-world quant work.
-
-Thank You
-
-Repository:
+Repository:  
 https://github.com/celsoavila/factor-fund
 
-Feel free to open issues or reach out for discussion or collaboration.
+Feel free to reach out or open issues for suggestions, collaboration or discussion.
+
