@@ -1,7 +1,0 @@
-numpy
-pandas
-pyarrow
-matplotlib
-plotly
-pydantic
-rich
