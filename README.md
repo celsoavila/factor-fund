@@ -95,6 +95,9 @@ date, ticker, target_weight
 
 ### Model Diagnostic (M2)
 
+![Backtest equity curves](docs/presentation/backtest_demo_equity_curves.png)
+
+
 *(Image omitted in README to avoid broken link — can be added later)*
 
 Example: real vs. predicted returns from the synthetic Ridge model.
@@ -198,6 +201,7 @@ Quantitative Portfolio Manager & CTO with experience in:
 - Daily research pipelines and production automation  
 
 This project is a curated public showcase of real-world quantitative work.
+
 
 
 
