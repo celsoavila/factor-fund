@@ -11,9 +11,10 @@
 *.onnx
 *.pt
 *.ckpt
-models/
+models/*
 !models/*.png
 weights/
+
 
 
 # segredos e zips
