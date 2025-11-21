@@ -109,7 +109,7 @@ Example: real vs. predicted returns from the synthetic Ridge model.
 
 
 ---
-## 🧪 Synthetic Demo Pipeline (M1–M3)
+## 🧪 Synthetic Demo Pipeline (M1–M4)
 
 A fully functional **synthetic end-to-end pipeline** is included using only Python scripts.
 
@@ -128,6 +128,9 @@ python notebooks/M2_model_training_demo.py
 
 # M3 — Build a simple long-only portfolio from model scores
 python notebooks/M3_portfolio_demo.py
+
+# M4 — Backtest model vs equal-weight benchmark
+python notebooks/M4_backtest_demo.py
 ```
 
 ### ▶ This will generate
@@ -195,6 +198,7 @@ Quantitative Portfolio Manager & CTO with experience in:
 - Daily research pipelines and production automation  
 
 This project is a curated public showcase of real-world quantitative work.
+
 
 
 
