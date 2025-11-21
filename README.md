@@ -142,6 +142,28 @@ Open the notebooks:
 - `M4_backtest.ipynb`
 - `M5_factor_analysis.ipynb`
 
+---
+## 🧪 Synthetic demo pipeline (M1–M3)
+
+This repository includes a small **end-to-end demo** using synthetic data,
+implemented as simple Python scripts (no external data required).
+
+With your Python environment activated (e.g., conda env `factors`), run:
+
+```bash
+cd path/to/factor-fund
+
+# M1 – Generate synthetic factor matrix
+python notebooks/00_generate_factor_matrix_demo.py
+
+# M2 – Train Ridge model and save artifacts
+python notebooks/M2_model_training_demo.py
+
+# M3 – Build a simple long-only portfolio from model scores
+python notebooks/M3_portfolio_demo.py
+```
+
+---
 ## 🎯 Roadmap
 
 **Short term**
@@ -154,6 +176,8 @@ Open the notebooks:
 - Add multi-country universes  
 - Expand factor research modules  
 
+
+---
 ## 👤 About the Author
 
 Quantitative Portfolio Manager & CTO with experience in:
@@ -165,6 +189,7 @@ Quantitative Portfolio Manager & CTO with experience in:
 - Daily research pipelines and production automation  
 
 This project is a curated public showcase of real-world quantitative work.
+
 
 
 
