@@ -93,14 +93,18 @@ date, ticker, target_weight
 
 ## 📊 Example Output (from synthetic demo)
 
-### Model Diagnostic (M2)
+### Model diagnostic (M2)
+
+Real vs. predicted returns from the synthetic Ridge model:
+
+![M2 ridge demo](docs/presentation/ridge_demo_y_true_vs_pred.png)
+
+### Backtest equity curves (M4)
+
+Synthetic example of the model portfolio vs an equal-weight benchmark:
 
 ![Backtest equity curves](docs/presentation/backtest_demo_equity_curves.png)
 
-
-*(Image omitted in README to avoid broken link — can be added later)*
-
-Example: real vs. predicted returns from the synthetic Ridge model.
 
 ### Sample Portfolio (M3)
 
@@ -201,6 +205,7 @@ Quantitative Portfolio Manager & CTO with experience in:
 - Daily research pipelines and production automation  
 
 This project is a curated public showcase of real-world quantitative work.
+
 
 
 
