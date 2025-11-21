@@ -61,9 +61,11 @@ factor-fund/
 ### **M2 — Prediction Model**
 - Cross-sectional modeling of forward returns  
 - Supports Ridge, Lasso, RandomForest, XGBoost, Neural Networks  
-- Outputs:  
+- Outputs:
 
+```text
 date, ticker, model_score
+```
 
 
 ### **M3 — Portfolio Construction**
@@ -71,9 +73,9 @@ date, ticker, model_score
 - Constraints: max/min weights, turnover, normalization  
 - Outputs:  
 
-
+```text
 date, ticker, target_weight
-
+```
 
 ### **M4 — Backtesting & Performance**
 - Daily PnL  
@@ -119,7 +121,7 @@ With your Python environment activated (e.g., conda env `factors`):
 cd factor-fund
 
 # M1 — Generate synthetic factor matrix
-python notebooks/00_generate_factor_matrix_demo.py
+python notebooks/M1_generate_factor_matrix_demo.py
 
 # M2 — Train Ridge model and save artifacts
 python notebooks/M2_model_training_demo.py
@@ -193,6 +195,7 @@ Quantitative Portfolio Manager & CTO with experience in:
 - Daily research pipelines and production automation  
 
 This project is a curated public showcase of real-world quantitative work.
+
 
 
 
