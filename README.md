@@ -159,17 +159,19 @@ pip install -r requirements.txt
 
 
 
-requirements.txt includes:numpy
+requirements.txt includes:
 
+```bash
+numpy
 pandas
 scikit-learn
 matplotlib
 joblib
-
+```
 
 ## 🎯 Roadmap
 
-```bash
+
 **Short term**
 - Add synthetic end-to-end demo  
 - Add performance figures and factor exposure plots  
@@ -179,7 +181,6 @@ joblib
 - Add advanced model architectures  
 - Add multi-country universes  
 - Expand factor research modules  
----
 
 ## 👤 About the Author
 
@@ -192,6 +193,7 @@ Quantitative Portfolio Manager & CTO with experience in:
 - Daily research pipelines and production automation  
 
 This project is a curated public showcase of real-world quantitative work.
+
 
 
 
