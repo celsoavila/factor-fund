@@ -99,12 +99,6 @@ Real vs. predicted returns from the synthetic Ridge model:
 
 ![M2 ridge demo](docs/presentation/ridge_demo_y_true_vs_pred.png)
 
-### Backtest equity curves (M4)
-
-Synthetic example of the model portfolio vs an equal-weight benchmark:
-
-![Backtest equity curves](docs/presentation/backtest_demo_equity_curves.png)
-
 
 ### Sample Portfolio (M3)
 
@@ -113,6 +107,24 @@ Synthetic example of the model portfolio vs an equal-weight benchmark:
 | 2024-01-31 | AAA3   | 0.0789      | 0.5    |
 | 2024-01-31 | BBB4   | 0.0786      | 0.5    |
 | 2024-01-31 | EEE3   | 0.0401      | 0.0    |
+
+
+### Backtest equity curves (M4)
+
+Synthetic example of the model portfolio vs an equal-weight benchmark:
+
+![Backtest equity curves](docs/presentation/backtest_demo_equity_curves.png)
+
+
+### Factor analysis (M5)
+
+The M5 demo extracts factor importance from the Ridge model coefficients and
+computes simple correlations with future returns and model scores, saving
+results to `data/examples/factor_analysis_demo.csv` and the bar plot
+`docs/presentation/factor_importance_demo.png`.
+
+![Factor importance demo](docs/presentation/factor_importance_demo.png)
+
 
 
 ---
@@ -205,6 +217,7 @@ Quantitative Portfolio Manager & CTO with experience in:
 - Daily research pipelines and production automation  
 
 This project is a curated public showcase of real-world quantitative work.
+
 
 
 
